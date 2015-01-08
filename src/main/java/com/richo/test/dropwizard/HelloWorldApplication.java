@@ -1,8 +1,10 @@
 package com.richo.test.dropwizard;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 {
@@ -20,7 +22,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 	@Override
 	public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap)
 	{
-		// nothing to do yet
+		AssetsBundle assetsBundle = new AssetsBundle("/assets/", "/", "index.html", "static");
+		bootstrap.addBundle(assetsBundle);
 	}
 
 	@Override
@@ -31,12 +34,13 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 				configuration.getTemplate(),
 				configuration.getDefaultName()
 		);
-		
+
 		final TemplateHealthCheck healthCheck =
 				new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
 
 		environment.jersey().register(resource);
+		environment.jersey().setUrlPattern("/api/*");
 	}
 
 }
