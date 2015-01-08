@@ -2,8 +2,11 @@ package com.richo.test.dropwizard;
 
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.servlets.tasks.GarbageCollectionTask;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration>
@@ -38,6 +41,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 		final TemplateHealthCheck healthCheck =
 				new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
+
+		environment.admin().addTask(new MyTestTask());
 
 		environment.jersey().register(resource);
 		environment.jersey().setUrlPattern("/api/*");
