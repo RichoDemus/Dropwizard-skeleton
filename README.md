@@ -15,3 +15,7 @@ URLs
 * [Main page](http://localhost:8080)  
 * [Api](http://localhost:8080/api/hello-world?name=Successful+Dropwizard+User)  
 * [Admin page](http://localhost:8081)
+
+Misc
+----
+* Banner created with [Taag](http://patorjk.com/software/taag)
