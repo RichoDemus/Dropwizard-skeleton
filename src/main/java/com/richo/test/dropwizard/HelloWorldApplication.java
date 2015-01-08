@@ -1,12 +1,11 @@
 package com.richo.test.dropwizard;
 
+import com.richo.test.dropwizard.api.HelloWorldApi;
+import com.richo.test.dropwizard.api.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.servlets.tasks.GarbageCollectionTask;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration>
@@ -33,7 +32,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 	public void run(HelloWorldConfiguration configuration,
 	                Environment environment)
 	{
-		final HelloWorldResource resource = new HelloWorldResource(
+		final HelloWorldApi resource = new HelloWorldResource(
 				configuration.getTemplate(),
 				configuration.getDefaultName()
 		);

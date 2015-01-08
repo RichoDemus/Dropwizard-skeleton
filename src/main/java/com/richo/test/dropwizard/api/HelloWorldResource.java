@@ -1,7 +1,8 @@
-package com.richo.test.dropwizard;
+package com.richo.test.dropwizard.api;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
+import com.richo.test.dropwizard.model.Saying;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,9 +11,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Path("/hello-world")
-@Produces(MediaType.APPLICATION_JSON)
-public class HelloWorldResource
+
+public class HelloWorldResource implements HelloWorldApi
 {
 	private final String template;
 	private final String defaultName;
@@ -25,10 +25,8 @@ public class HelloWorldResource
 		this.counter = new AtomicLong();
 	}
 
-	@GET
-	@Timed
-	public Saying sayHello(@QueryParam("name") Optional<String> name)
-	{
+	@Override
+	public Saying sayHello(Optional<String> name) {
 		final String value = String.format(template, name.or(defaultName));
 		return new Saying(counter.incrementAndGet(), value);
 	}
