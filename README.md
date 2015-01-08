@@ -12,6 +12,6 @@ mvn clean package && java -jar target/dropwizard-1.0-SNAPSHOT.jar server target/
 
 URLs
 ----
-* Page is located at http://localhost:8080  
-* Api is located at http://localhost:8080/api/hello-world?name=Successful+Dropwizard+User  
-* Admin page is located at http://localhost:8081
+* [Main page](http://localhost:8080)  
+* [Api](http://localhost:8080/api/hello-world?name=Successful+Dropwizard+User)  
+* [Admin page](http://localhost:8081)
