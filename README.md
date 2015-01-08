@@ -15,6 +15,7 @@ URLs
 * [Main page](http://localhost:8080)  
 * [Api](http://localhost:8080/api/hello-world?name=Successful+Dropwizard+User)  
 * [Admin page](http://localhost:8081)
+* Run GC by doing a POST on [http://localhost:8081/tasks/gc](http://localhost:8081/tasks/gc)
 
 Misc
 ----
