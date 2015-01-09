@@ -1,5 +1,6 @@
 package com.richo.test.dropwizard;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -7,10 +8,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class HelloWorldConfiguration extends Configuration
 {
 	@NotEmpty
-	private String template;
+	final private String template;
 
 	@NotEmpty
-	private String defaultName = "Stranger";
+	final private String defaultName;
+
+	@JsonCreator
+	public HelloWorldConfiguration(@JsonProperty("template") String template, @JsonProperty("defaultName") String defaultName)
+	{
+		this.template = template;
+		this.defaultName = defaultName;
+	}
 
 	@JsonProperty
 	public String getTemplate()
@@ -19,20 +27,8 @@ public class HelloWorldConfiguration extends Configuration
 	}
 
 	@JsonProperty
-	public void setTemplate(String template)
-	{
-		this.template = template;
-	}
-
-	@JsonProperty
 	public String getDefaultName()
 	{
 		return defaultName;
-	}
-
-	@JsonProperty
-	public void setDefaultName(String name)
-	{
-		this.defaultName = name;
 	}
 }
