@@ -2,10 +2,14 @@ package com.richo.test.dropwizard;
 
 import com.richo.test.dropwizard.api.HelloWorldApi;
 import com.richo.test.dropwizard.api.HelloWorldResource;
+import com.richo.test.dropwizard.filter.MyFilter;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration>
@@ -40,6 +44,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 		final TemplateHealthCheck healthCheck =
 				new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
+
+		environment.getApplicationContext().addFilter(MyFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
 
 		environment.admin().addTask(new MyTestTask());
 
