@@ -50,7 +50,6 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 		environment.admin().addTask(new MyTestTask());
 
 		environment.jersey().register(resource);
-		environment.jersey().setUrlPattern("/api/*");
 	}
 
 }
