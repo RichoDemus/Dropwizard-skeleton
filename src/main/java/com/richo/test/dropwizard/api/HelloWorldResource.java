@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class HelloWorldResource implements HelloWorldApi
 {
+	private static final AtomicLong initCounter = new AtomicLong();
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final String template;
 	private final String defaultName;
@@ -20,6 +21,7 @@ public class HelloWorldResource implements HelloWorldApi
 		this.template = template;
 		this.defaultName = defaultName;
 		this.counter = new AtomicLong();
+		logger.warn("HelloWorldResource number {} created", initCounter.incrementAndGet());
 	}
 
 	@Override
