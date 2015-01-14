@@ -7,13 +7,20 @@ import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 {
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
 	public static void main(String[] args) throws Exception
 	{
 		new HelloWorldApplication().run(args);
@@ -36,6 +43,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 	public void run(HelloWorldConfiguration configuration,
 	                Environment environment)
 	{
+		enableWadl(environment);
+
 		final HelloWorldApi resource = new HelloWorldResource(
 				configuration.getTemplate(),
 				configuration.getDefaultName()
@@ -50,6 +59,14 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>
 		environment.admin().addTask(new MyTestTask());
 
 		environment.jersey().register(resource);
+
+	}
+
+	private void enableWadl(Environment environment)
+	{
+		Map<String, Object> props = new HashMap<>();
+		props.put("jersey.config.server.wadl.disableWadl", "false");
+		environment.jersey().getResourceConfig().addProperties(props);
 	}
 
 }
