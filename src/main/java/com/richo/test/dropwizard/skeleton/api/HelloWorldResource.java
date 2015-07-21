@@ -1,10 +1,12 @@
 package com.richo.test.dropwizard.skeleton.api;
 
 import com.google.common.base.Optional;
+import com.google.inject.name.Named;
 import com.richo.test.dropwizard.skeleton.model.Saying;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.util.concurrent.atomic.AtomicLong;
 
 
@@ -16,7 +18,8 @@ public class HelloWorldResource implements HelloWorldApi
 	private final String defaultName;
 	private final AtomicLong counter;
 
-	public HelloWorldResource(String template, String defaultName)
+	@Inject
+	public HelloWorldResource(@Named("template") String template, @Named("defaultName") String defaultName)
 	{
 		this.template = template;
 		this.defaultName = defaultName;

@@ -45,7 +45,7 @@ public class HelloWorldBundle implements ConfiguredBundle<HelloWorldConfiguratio
 
         environment.admin().addTask(new MyTestTask());
 
-        environment.jersey().register(resource);
+        //environment.jersey().register(resource);
     }
 
     private void enableWadl(Environment environment)
