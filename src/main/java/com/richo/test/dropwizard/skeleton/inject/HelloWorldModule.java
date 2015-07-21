@@ -4,6 +4,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
 import com.richo.test.dropwizard.skeleton.HelloWorldConfiguration;
+import com.richo.test.dropwizard.skeleton.service.Service;
+import com.richo.test.dropwizard.skeleton.service.ServiceApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +22,7 @@ public class HelloWorldModule extends AbstractModule
     protected void configure()
     {
         logger.error("################HelloWorldModule.configure");
+        bind(ServiceApi.class).to(Service.class);
     }
 
     @Inject

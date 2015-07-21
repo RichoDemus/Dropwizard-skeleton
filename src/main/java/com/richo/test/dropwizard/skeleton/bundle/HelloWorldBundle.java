@@ -32,10 +32,7 @@ public class HelloWorldBundle implements ConfiguredBundle<HelloWorldConfiguratio
     {
         enableWadl(environment);
 
-        final HelloWorldApi resource = new HelloWorldResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
-        );
+
 
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
@@ -45,7 +42,6 @@ public class HelloWorldBundle implements ConfiguredBundle<HelloWorldConfiguratio
 
         environment.admin().addTask(new MyTestTask());
 
-        //environment.jersey().register(resource);
     }
 
     private void enableWadl(Environment environment)
