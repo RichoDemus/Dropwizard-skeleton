@@ -1,5 +1,6 @@
 package com.richo.test.dropwizard.skeleton.inject;
 
+import com.github.richodemus.guice_classpath_scanning.ClassPathScanningModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
@@ -22,7 +23,7 @@ public class HelloWorldModule extends AbstractModule
     protected void configure()
     {
         logger.error("################HelloWorldModule.configure");
-        bind(ServiceApi.class).to(Service.class);
+        install(new ClassPathScanningModule("com.richo.test.dropwizard.skeleton"));
     }
 
     @Inject
