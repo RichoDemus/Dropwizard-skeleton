@@ -1,4 +1,4 @@
-package com.richo.test.dropwizard.model;
+package com.richo.test.dropwizard.skeleton.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;

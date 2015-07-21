@@ -1,7 +1,7 @@
-package com.richo.test.dropwizard.api;
+package com.richo.test.dropwizard.skeleton.api;
 
 import com.google.common.base.Optional;
-import com.richo.test.dropwizard.model.Saying;
+import com.richo.test.dropwizard.skeleton.model.Saying;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

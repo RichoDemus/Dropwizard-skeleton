@@ -1,4 +1,4 @@
-package com.richo.test.dropwizard;
+package com.richo.test.dropwizard.skeleton;
 
 import com.google.common.collect.ImmutableMultimap;
 import io.dropwizard.servlets.tasks.Task;
@@ -11,7 +11,7 @@ public class MyTestTask extends Task
 {
 	final Logger logger = LoggerFactory.getLogger(getClass());
 
-	protected MyTestTask()
+	public MyTestTask()
 	{
 		super("test");
 	}

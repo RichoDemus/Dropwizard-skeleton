@@ -1,8 +1,8 @@
-package com.richo.test.dropwizard.api;
+package com.richo.test.dropwizard.skeleton.api;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
-import com.richo.test.dropwizard.model.Saying;
+import com.richo.test.dropwizard.skeleton.model.Saying;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

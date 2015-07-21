@@ -1,4 +1,4 @@
-package com.richo.test.dropwizard;
+package com.richo.test.dropwizard.skeleton;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
