@@ -2,6 +2,7 @@ package com.richo.test.dropwizard.skeleton.api;
 
 import com.google.common.base.Optional;
 import com.google.inject.name.Named;
+import com.richo.test.dropwizard.skeleton.HelloWorldConfiguration;
 import com.richo.test.dropwizard.skeleton.model.Saying;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,12 @@ public class HelloWorldResource implements HelloWorldApi
 	private final AtomicLong counter;
 
 	@Inject
+	public HelloWorldResource(HelloWorldConfiguration conf)
+	{
+		this(conf.getTemplate(), conf.getDefaultName());
+	}
+
+	//@Inject
 	public HelloWorldResource(@Named("template") String template, @Named("defaultName") String defaultName)
 	{
 		this.template = template;
