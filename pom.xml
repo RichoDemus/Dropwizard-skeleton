@@ -96,12 +96,7 @@
                 <version>0.4.1</version>
                 <configuration>
                     <imageName>dockwizard</imageName>
-                    <baseImage>frolvlad/alpine-oraclejdk8:latest</baseImage>
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "server", "/hello-world.yml"]</entryPoint>
-                    <dockerExposes>
-                        <expose>8080</expose>
-                    </dockerExposes>
-                    <!-- copy the service's jar file from target into the root directory of the image -->
+                    <dockerDirectory>docker</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
